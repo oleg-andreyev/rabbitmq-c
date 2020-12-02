@@ -327,6 +327,7 @@ int amqp_basic_ack(amqp_connection_state_t state, amqp_channel_t channel,
 
 amqp_rpc_reply_t amqp_basic_get(amqp_connection_state_t state,
                                 amqp_channel_t channel, amqp_bytes_t queue,
+                                amqp_bytes_t consumer_tag,
                                 amqp_boolean_t no_ack) {
   amqp_method_number_t replies[] = {AMQP_BASIC_GET_OK_METHOD,
                                     AMQP_BASIC_GET_EMPTY_METHOD, 0};
@@ -334,6 +335,7 @@ amqp_rpc_reply_t amqp_basic_get(amqp_connection_state_t state,
   req.ticket = 0;
   req.queue = queue;
   req.no_ack = no_ack;
+  req.consumer_tag = consumer_tag;
 
   state->most_recent_api_result =
       amqp_simple_rpc(state, channel, AMQP_BASIC_GET_METHOD, replies, &req);

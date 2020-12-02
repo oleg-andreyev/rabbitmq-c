@@ -1976,6 +1976,7 @@ int AMQP_CALL amqp_basic_ack(amqp_connection_state_t state,
  * \param [in] state the connection object
  * \param [in] channel the channel identifier to use
  * \param [in] queue the queue name to retrieve from
+ * \param [in] consumer_tag
  * \param [in] no_ack if true the message is automatically ack'ed
  *              if false amqp_basic_ack should be called once the message
  *              retrieved has been processed
@@ -1987,6 +1988,7 @@ AMQP_PUBLIC_FUNCTION
 amqp_rpc_reply_t AMQP_CALL amqp_basic_get(amqp_connection_state_t state,
                                           amqp_channel_t channel,
                                           amqp_bytes_t queue,
+                                          amqp_bytes_t consumer_tag,
                                           amqp_boolean_t no_ack);
 
 /**

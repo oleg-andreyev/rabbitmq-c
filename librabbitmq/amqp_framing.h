@@ -653,6 +653,7 @@ typedef struct amqp_basic_get_t_ {
   uint16_t ticket;       /**< ticket */
   amqp_bytes_t queue;    /**< queue */
   amqp_boolean_t no_ack; /**< no-ack */
+  amqp_bytes_t consumer_tag; /**< consumer-tag */
 } amqp_basic_get_t;
 
 #define AMQP_BASIC_GET_OK_METHOD                                           \
